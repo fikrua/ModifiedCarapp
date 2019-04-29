@@ -1,24 +1,41 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
-        Car car = new Car();
+        Scanner scan = new Scanner(System.in);
+        ArrayList<Car> cars = new ArrayList<Car>();
+        boolean done  = false;
+        while(!done){
+        System.out.println("enter the car color");
+        String colores = scan.nextLine();
+        System.out.println("enter the model ");
+        String mod = scan.nextLine();
+        System.out.println("enter the speed ");
+        String speed = scan.nextLine();
 
-        Car car1 = new Car("red","Porsche","50 Mph");
-        Car car2 = new Car("blue","Jetta","50 Mph");
+        Car car = new Car(colores,mod,speed);
+       cars.add(car);
+            System.out.println("do you continue y/n");
+            String yes = scan.nextLine();
+            if(yes.equalsIgnoreCase("y"))
+                done =false;
+            else
+                done = true;
+        }
+        for(Car c:cars) {
 
 
-        car1.isStarting();
-        car2.isStarting();
-        car1.accelerating();
-        car2.accelerating();
-        car1.emmissionTest();
-        car2.emmissionTest();
-        car1.isPassedTest();
-        car2.isPassedTest();
-        car1.speeding();
-        car2.speeding();
+        c.isStarting();
+        c.accelerating();
+        c.emmissionTest();
+        c.isPassedTest();
+        c.speeding();
+        }
+
 
     }
 }
